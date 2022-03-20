@@ -1,7 +1,7 @@
-from rest_framework import serializers
-from .models import Item
+from .serializers_base import ItemSerializerBase
+from auth_api.serializers_base import UserAccountSerializerBase
 
-class ItemSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Item
-        fields = ('id', 'name', 'category', 'description', 'cost',)
+class ItemSerializer(ItemSerializerBase):
+    user = UserAccountSerializerBase()
+    class Meta(ItemSerializerBase.Meta):
+        fields = ItemSerializerBase.Meta.fields + ('user',)
