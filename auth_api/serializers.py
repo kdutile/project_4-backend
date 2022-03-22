@@ -2,7 +2,7 @@ from .serializers_base import UserAccountSerializerBase
 from items_api.serializers_base import ItemSerializerBase
 
 class UserAccountSerializer(UserAccountSerializerBase):
-    items = ItemSerializerBase(many=True, allow_null=True)
+    items = ItemSerializerBase(many=True, allow_null=True, required=False)
 
     class Meta(UserAccountSerializerBase.Meta):
         fields = UserAccountSerializerBase.Meta.fields + ('items',)
